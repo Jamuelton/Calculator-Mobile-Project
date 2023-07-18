@@ -42,14 +42,25 @@ export function Calculator() {
     setFirstNum("");
   };
 
-  const handleMemoryPlus = (number) => {
-    setMValue((parseFloat(display) + parseFloat(number)).toString());
+  const handleMemoryPlus = () => {
+    if (firstNum != "") {
+      setMValue((parseFloat(firstNum) + parseFloat(mVAlue)).toString());
+    }
+    if (firstNum == "") {
+      setMValue((parseFloat(display) + parseFloat(mVAlue)).toString());
+    }
+
     setMemory(true);
     memoryDisplay();
   };
 
-  const handleMemoryMinus = (number) => {
-    setMValue((parseFloat(mVAlue) - parseFloat(number)).toString());
+  const handleMemoryMinus = () => {
+    if (firstNum != "") {
+      setMValue((parseFloat(mVAlue) - parseFloat(firstNum)).toString());
+    }
+    if (firstNum == "") {
+      setMValue((parseFloat(mVAlue) - parseFloat(display)).toString());
+    }
   };
 
   const handleMemoryR = () => {
@@ -69,15 +80,23 @@ export function Calculator() {
     switch (operation) {
       case "+":
         setDisplay((parseFloat(secondNum) + parseFloat(firstNum)).toString());
+        setFirstNum("");
+        setSecondNum("");
         break;
       case "-":
         setDisplay((parseFloat(secondNum) - parseFloat(firstNum)).toString());
+        setFirstNum("");
+        setSecondNum("");
         break;
       case "*":
         setDisplay((parseFloat(secondNum) * parseFloat(firstNum)).toString());
+        setFirstNum("");
+        setSecondNum("");
         break;
       case "/":
         setDisplay((parseFloat(secondNum) / parseFloat(firstNum)).toFixed(8));
+        setFirstNum("");
+        setSecondNum("");
         break;
       default:
         setDisplay("0");
@@ -113,11 +132,11 @@ export function Calculator() {
             <Button number="MR" color="#95afc0" />
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={() => handleMemoryPlus(mVAlue)}>
+          <TouchableHighlight onPress={() => handleMemoryPlus()}>
             <Button number="M+" color="#95afc0" />
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={() => handleMemoryMinus(display)}>
+          <TouchableHighlight onPress={() => handleMemoryMinus()}>
             <Button number="M-" color="#95afc0" />
           </TouchableHighlight>
 
