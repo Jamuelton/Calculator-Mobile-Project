@@ -22,6 +22,10 @@ export function Calculator() {
     }
   };
 
+  const handleNumberDelete = () => {
+    setFirstNum(firstNum.slice(0, -1));
+  };
+
   const handleOperation = (op) => {
     setOperation(op.toString());
     setSecondNum(firstNum);
@@ -35,17 +39,29 @@ export function Calculator() {
     setSecondNum("");
   };
 
-  const handleMemoryPress = () => {
-    if (memory === false) {
-      setMemory(true);
-    }
+  const handleMemoryPlus = (number) => {
+    setMValue((parseFloat(display) + parseFloat(number)).toString());
+    setMemory(true);
+    memoryDisplay();
+  };
+
+  const handleMemoryMinus = (number) => {
+    setMValue((parseFloat(mVAlue) - parseFloat(number)).toString());
+  };
+
+  const handleMemoryR = () => {
+    setDisplay(mVAlue);
+  };
+
+  const handleMemoryC = () => {
+    setMValue("0");
     setMemory(false);
   };
 
-  const handleMemoryPlus = () => {};
-  const handleMemoryMinus = () => {};
-  const handleMemoryR = () => {};
-  const handleMemoryC = () => {};
+  console.log(display);
+  console.log(mVAlue);
+  console.log(memory);
+
   const operationSelect = () => {
     switch (operation) {
       case "+":
@@ -67,16 +83,10 @@ export function Calculator() {
   };
 
   const numberDisplay = () => {
-    if (display != null) {
-      return (
-        <Display
-          displayContent={firstNum.toString()}
-          secontContent={display.toString()}
-        />
-      );
-    }
-    if (firstNum != null) {
-      return <Display displayContent="0" secontContent="0" />;
+    if (display != "0") {
+      return <Display secontContent={display.toString()} displayContent="" />;
+    } else {
+      return <Display secontContent={firstNum.toString()} displayContent="" />;
     }
   };
 
@@ -92,27 +102,23 @@ export function Calculator() {
         <Text>Jamu`s Calculator</Text>
       </View>
       <View style={calculatorStyle.display}>
-        <Display
-          displayContent={secondNum}
-          secontContent={numberDisplay()}
-          memory={memoryDisplay()}
-        />
+        <Display secontContent={numberDisplay()} memory={memoryDisplay()} />
       </View>
       <View style={calculatorStyle.keyboard}>
         <View style={calculatorStyle.buttonRow}>
-          <TouchableHighlight>
+          <TouchableHighlight onPress={() => handleMemoryR()}>
             <Button number="MR" color="#95afc0" />
           </TouchableHighlight>
 
-          <TouchableHighlight>
+          <TouchableHighlight onPress={() => handleMemoryPlus(mVAlue)}>
             <Button number="M+" color="#95afc0" />
           </TouchableHighlight>
 
-          <TouchableHighlight>
+          <TouchableHighlight onPress={() => handleMemoryMinus(display)}>
             <Button number="M-" color="#95afc0" />
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={handleClearPress}>
+          <TouchableHighlight onPress={() => handleMemoryC()}>
             <Button number="MC" color="#95afc0" />
           </TouchableHighlight>
         </View>
@@ -182,6 +188,18 @@ export function Calculator() {
 
           <TouchableHighlight onPress={() => handleOperation("+")}>
             <Button number="+" color="#f0932b" />
+          </TouchableHighlight>
+        </View>
+        <View style={calculatorStyle.buttonRow}>
+          <TouchableHighlight onPress={() => handleNumberDelete()}>
+            <Button number="<" color="#535c68" />
+          </TouchableHighlight>
+
+          <TouchableHighlight onPress={() => handleClearPress()}>
+            <Button number="C" color="#535c68" />
+          </TouchableHighlight>
+          <TouchableHighlight onPress={() => handleClearPress()}>
+            <Button number="CE" color="#535c68" />
           </TouchableHighlight>
         </View>
       </View>

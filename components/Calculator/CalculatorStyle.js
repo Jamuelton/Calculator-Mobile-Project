@@ -12,15 +12,17 @@ const calculatorStyle = StyleSheet.create({
     width: "100%",
   },
   name: {
-    flex: 1,
+    flex: 2,
   },
 
   display: {
     flex: 2,
+    width: 400,
   },
   keyboard: {
     width: "100%",
-    flex: 4,
+    height: "100%",
+    flex: 6,
     flexDirection: "column",
     justifyContent: "space-around",
   },

@@ -4,9 +4,8 @@ import displayStyle from "./Styles";
 export function Display({ displayContent, secontContent, memory }) {
   return (
     <View style={displayStyle.container}>
-      <Text style={displayStyle.content}>{displayContent}</Text>
-      <Text style={displayStyle.content}>{secontContent}</Text>
-      <Text style={displayStyle.content}>{memory}</Text>
+      <Text style={displayStyle.contentMemory}>{memory}</Text>
+      <Text style={displayStyle.contentSecond}>{secontContent}</Text>
     </View>
   );
 }
