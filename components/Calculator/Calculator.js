@@ -31,6 +31,40 @@ export function Calculator() {
     setOperation("");
     setSecondNum("");
   };
+
+  const operationSelect = () => {
+    switch (operation) {
+      case "+":
+        setDisplay((parseFloat(secondNum) + parseFloat(firstNum)).toString());
+        break;
+      case "-":
+        setDisplay((parseFloat(secondNum) - parseFloat(firstNum)).toString());
+        break;
+      case "*":
+        setDisplay((parseFloat(secondNum) * parseFloat(firstNum)).toString());
+        break;
+      case "/":
+        setDisplay((parseFloat(secondNum) / parseFloat(firstNum)).toFixed(8));
+        break;
+      default:
+        setDisplay("0");
+        break;
+    }
+  };
+
+  const numberDisplay = () => {
+    if (display != null) {
+      return (
+        <Display
+          displayContent={firstNum.toString()}
+          secontContent={display.toString()}
+        />
+      );
+    }
+    if (firstNum != null) {
+      return <Display displayContent="0" secontContent="0" />;
+    }
+  };
   return (
     <View style={calculatorStyle.container}>
       <View style={calculatorStyle.name}>
