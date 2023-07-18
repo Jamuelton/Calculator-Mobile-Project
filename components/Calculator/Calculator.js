@@ -194,15 +194,17 @@ export function Calculator() {
           </TouchableHighlight>
         </View>
         <View style={calculatorStyle.buttonRow}>
-          <TouchableHighlight onPress={() => handleNumberDelete()}>
-            <Button number="<" color="#535c68" />
-          </TouchableHighlight>
-
           <TouchableHighlight onPress={() => handleClearPress()}>
             <Button number="C" color="#e74c3c" />
           </TouchableHighlight>
+          <TouchableHighlight onPress={() => handleNumberDelete()}>
+            <Button number="<" color="#535c68" />
+          </TouchableHighlight>
           <TouchableHighlight onPress={() => handleClearLine()}>
-            <Button number="CE" color="#535c68" />
+            <Button number="CE" color="#16a085" />
+          </TouchableHighlight>
+          <TouchableHighlight>
+            <Button number="Jamu" color="#f1c40f" />
           </TouchableHighlight>
         </View>
       </View>
