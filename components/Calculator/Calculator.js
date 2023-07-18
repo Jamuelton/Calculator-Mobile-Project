@@ -5,6 +5,10 @@ import { Button } from "../Button/Button";
 import { Display } from "../Display/Display";
 
 export function Calculator() {
+  const [display, setDisplay] = useState("0");
+  const [firstNum, setFirstNum] = useState("");
+  const [secondNum, setSecondNum] = useState("");
+  const [operation, setOperation] = useState("");
   return (
     <View style={calculatorStyle.container}>
       <View style={calculatorStyle.name}>
