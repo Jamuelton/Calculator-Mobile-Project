@@ -3,6 +3,7 @@ import { Text, TouchableHighlight, View } from "react-native";
 import calculatorStyle from "./CalculatorStyle";
 import { Button } from "../Button/Button";
 import { Display } from "../Display/Display";
+import { useState } from "react";
 
 export function Calculator() {
   const [display, setDisplay] = useState("0");
