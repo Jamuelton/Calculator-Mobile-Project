@@ -8,20 +8,14 @@ const displayStyle = StyleSheet.create({
     alignItems: "flex-end",
     padding: 10,
   },
-  content: {
-    color: "#fff",
-    fontSize: 40,
-    backgroundColor: "#2980b9",
-  },
+
   contentSecond: {
     color: "#fff",
     fontSize: 40,
-    backgroundColor: "#9b59b6",
   },
   contentMemory: {
     color: "#fff",
     fontSize: 40,
-    backgroundColor: "#d35400",
   },
 });
 
