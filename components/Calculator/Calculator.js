@@ -9,6 +9,28 @@ export function Calculator() {
   const [firstNum, setFirstNum] = useState("");
   const [secondNum, setSecondNum] = useState("");
   const [operation, setOperation] = useState("");
+
+  const handleNumberPress = (number) => {
+    if (firstNum.length < 10) {
+      if (number === "." && firstNum.includes(".")) {
+        return;
+      }
+      setFirstNum(firstNum + number);
+    }
+  };
+
+  const handleOperation = (op) => {
+    setOperation(op.toString());
+    setSecondNum(firstNum);
+    setFirstNum("");
+  };
+
+  const handleClearPress = () => {
+    setDisplay("0");
+    setFirstNum("");
+    setOperation("");
+    setSecondNum("");
+  };
   return (
     <View style={calculatorStyle.container}>
       <View style={calculatorStyle.name}>
