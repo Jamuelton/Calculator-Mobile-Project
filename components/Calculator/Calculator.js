@@ -38,6 +38,9 @@ export function Calculator() {
     setOperation("");
     setSecondNum("");
   };
+  const handleClearLine = () => {
+    setFirstNum("");
+  };
 
   const handleMemoryPlus = (number) => {
     setMValue((parseFloat(display) + parseFloat(number)).toString());
@@ -196,9 +199,9 @@ export function Calculator() {
           </TouchableHighlight>
 
           <TouchableHighlight onPress={() => handleClearPress()}>
-            <Button number="C" color="#535c68" />
+            <Button number="C" color="#e74c3c" />
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => handleClearPress()}>
+          <TouchableHighlight onPress={() => handleClearLine()}>
             <Button number="CE" color="#535c68" />
           </TouchableHighlight>
         </View>

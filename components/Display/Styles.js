@@ -4,8 +4,8 @@ const displayStyle = StyleSheet.create({
   container: {
     height: "100%",
     flexDirection: "row",
-    justifyContent: "flex-end",
-    alignItems: "flex-end",
+    justifyContent: "space-between",
+    alignItems: "center",
     padding: 10,
   },
 
