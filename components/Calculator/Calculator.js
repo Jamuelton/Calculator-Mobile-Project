@@ -10,6 +10,8 @@ export function Calculator() {
   const [firstNum, setFirstNum] = useState("");
   const [secondNum, setSecondNum] = useState("");
   const [operation, setOperation] = useState("");
+  const [memory, setMemory] = useState(false);
+  const [mVAlue, setMValue] = useState("0");
 
   const handleNumberPress = (number) => {
     if (firstNum.length < 10) {
@@ -33,6 +35,17 @@ export function Calculator() {
     setSecondNum("");
   };
 
+  const handleMemoryPress = () => {
+    if (memory === false) {
+      setMemory(true);
+    }
+    setMemory(false);
+  };
+
+  const handleMemoryPlus = () => {};
+  const handleMemoryMinus = () => {};
+  const handleMemoryR = () => {};
+  const handleMemoryC = () => {};
   const operationSelect = () => {
     switch (operation) {
       case "+":
@@ -66,13 +79,24 @@ export function Calculator() {
       return <Display displayContent="0" secontContent="0" />;
     }
   };
+
+  const memoryDisplay = () => {
+    if (memory === true) {
+      return "M";
+    }
+  };
+
   return (
     <View style={calculatorStyle.container}>
       <View style={calculatorStyle.name}>
         <Text>Jamu`s Calculator</Text>
       </View>
       <View style={calculatorStyle.display}>
-        <Display displayContent={secondNum} secontContent={numberDisplay()} />
+        <Display
+          displayContent={secondNum}
+          secontContent={numberDisplay()}
+          memory={memoryDisplay()}
+        />
       </View>
       <View style={calculatorStyle.keyboard}>
         <View style={calculatorStyle.buttonRow}>
